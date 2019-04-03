@@ -1,0 +1,4 @@
+Django==1.11.20
+djangorestframework==3.9.2
+psycopg2-binary==2.7.7
+pytz==2018.9
