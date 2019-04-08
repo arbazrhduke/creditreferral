@@ -136,3 +136,5 @@ EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool, default=False)
 DEFAULT_FROM_EMAIL = config('EMAIL_HOST_USER', cast=str, default='')
 
 REFERRAL_CREDITS=100
+
+CELERY_BROKER_URL = 'amqp://localhost'
