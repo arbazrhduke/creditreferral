@@ -12,9 +12,9 @@
    run following command
    `pip install -r requirements/prod.txt`
 3. To run project.
-+ locally run the following command..
++ locally update create a .env file, copy contents from .env.dev add appropriate values then, run the following command..
    `python manage.py runserver --settings defrag.settings.local`
-+ to run in production mode update .env file with required values and run following command.
++ to run in production create a .env file copy contents from .env.prod add required values for config and run following command.
    `python manage.py runserver --settings defrag.settings.production`
 
 ### Important Links
