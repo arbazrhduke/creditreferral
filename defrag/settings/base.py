@@ -11,23 +11,22 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+
 from decouple import (config)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY',cast=str)
+SECRET_KEY = config('SECRET_KEY', cast=str)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG',cast=bool)
+DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -75,7 +74,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'defrag.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
@@ -90,22 +88,25 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation'
+                '.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation'
+                '.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation'
+                '.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation'
+                '.NumericPasswordValidator',
     },
 ]
 
@@ -122,7 +123,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
@@ -135,6 +135,6 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', cast=str, default='')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool, default=False)
 DEFAULT_FROM_EMAIL = config('EMAIL_HOST_USER', cast=str, default='')
 
-REFERRAL_CREDITS=100
+REFERRAL_CREDITS = 100
 
 CELERY_BROKER_URL = 'amqp://localhost'

@@ -34,4 +34,5 @@ class InviteUserView(APIView):
                 protocol = "http://"
             host = "{}{}".format(protocol, request.get_host())
             invite_email.delay(serializer.data['emails'], request.user.id, host)
-        return Response({}, status=status.HTTP_200_OK)
+        return Response({"message": "Invites sent successfully"},
+                        status=status.HTTP_200_OK)
