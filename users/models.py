@@ -4,7 +4,6 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.db import models
 
 
-# Create your models here.
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None):
         """
@@ -68,6 +67,7 @@ class User(AbstractBaseUser):
     REQUIRED_FIELDS = []  # email and password are required by default
 
     def add_credits(self, new_credits):
+        """This method is used to add credits to Users."""
         user = User.objects.filter(
             referral_code=self.referral_code,
             version=self.version,
@@ -78,6 +78,7 @@ class User(AbstractBaseUser):
         return user > 0
 
     def set_referral_code(self):
+        """This method generates a 6 characters long referral code for an individual user who is signing up."""
         self.referral_code = uuid.uuid4().hex[:6].upper()
 
     def get_full_name(self):

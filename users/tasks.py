@@ -10,6 +10,7 @@ from users.models import User
 
 @app.task(bind=True, max_retries=3)
 def invite_email(self, invitee_emails, referee_id, host):
+    """Celery Task that sends invitation email to new invitee."""
     try:
         referee = User.objects.get(id=referee_id)
         subject = "Welcome"
