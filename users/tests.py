@@ -18,6 +18,7 @@ class UserModuleTest(TestCase):
 
     def setUp(self):
         self.client = Client()
+        """Creating a super user for testing."""
         user = User.objects.create(email=TEST_SUPER_USER_EMAIL, first_name=TEST_SUPER_USER_LAST_NAME,
                                    last_name=TEST_SUPER_USER_FIRST_NAME,
                                    is_superuser=True)
@@ -34,6 +35,7 @@ class UserModuleTest(TestCase):
         self.assertEqual(response.status_code, 401)
 
     def test_auth_successful(self):
+        """Test case to check valid user authentication"""
         data = dict()
         data['username'] = TEST_SUPER_USER_EMAIL
         data['password'] = TEST_SUPER_USER_PASSWORD
@@ -51,7 +53,6 @@ class UserModuleTest(TestCase):
         self.assertEqual(response.status_code, 201)
 
     def test_sign_up_failview(self):
-        print(User.objects.all())
         """Test Signup fail notice missing email from post body"""
         data = dict()
         data['first_name'] = TEST_USER_FIRST_NAME

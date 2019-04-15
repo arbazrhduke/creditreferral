@@ -2,7 +2,7 @@ import uuid
 
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.db import models
-
+from django.core.exceptions import ObjectDoesNotExist
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None):
@@ -42,6 +42,7 @@ class UserManager(BaseUserManager):
         )
         user.is_staff = True
         user.is_superuser = True
+        user.generate_referral_code()
         user.save(using=self._db)
         return user
 
@@ -60,8 +61,8 @@ class User(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
     last_login = models.DateTimeField(null=True)
     credits = models.IntegerField(default=0)
-    referral_code = models.CharField(max_length=6, unique=True, null=True)
-    referee_code = models.CharField(max_length=6, null=True)
+    referral_code = models.CharField(max_length=25, unique=True, null=True)
+    referee_code = models.CharField(max_length=25, null=True)
     version = models.IntegerField(default=0)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []  # email and password are required by default
@@ -75,11 +76,18 @@ class User(AbstractBaseUser):
             credits=self.credits + new_credits,
             version=self.version + 1,
         )
-        return user > 0
+        try:
+            current_user = User.objects.get(
+                referral_code=self.referral_code)
+            return current_user
+        except ObjectDoesNotExist:
+            raise ObjectDoesNotExist
 
-    def set_referral_code(self):
+    def generate_referral_code(self):
         """This method generates a 6 characters long referral code for an individual user who is signing up."""
-        self.referral_code = uuid.uuid4().hex[:6].upper()
+        self.referral_code = "{}_{}".format(self.id, uuid.uuid4().hex[:6].upper())
+        self.save()
+        return self
 
     def get_full_name(self):
         return self.username
