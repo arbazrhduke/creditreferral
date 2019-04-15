@@ -1,4 +1,5 @@
 # defrag
+[![CodeFactor](https://www.codefactor.io/repository/github/arbazrhduke/defrag/badge/master)](https://www.codefactor.io/repository/github/arbazrhduke/defrag/overview/master)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 
 
