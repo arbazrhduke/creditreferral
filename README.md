@@ -31,7 +31,7 @@ To run project.
 + To run in production create a .env file copy contents from .env.prod add required values for config and run following command.
    `python manage.py runserver --settings defrag.settings.production`
 
-###Running Celery
+### Running Celery
 + Open another terminal activate virtual environment and go to project path
 and run the following command
 `celery -A defrag worker -l info`
