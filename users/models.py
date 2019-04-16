@@ -76,12 +76,7 @@ class User(AbstractBaseUser):
             credits=self.credits + new_credits,
             version=self.version + 1,
         )
-        try:
-            current_user = User.objects.get(
-                referral_code=self.referral_code)
-            return current_user
-        except ObjectDoesNotExist:
-            raise ObjectDoesNotExist
+        return user > 0
 
     def generate_referral_code(self):
         """This method generates a 6 characters long referral code for an individual user who is signing up."""
