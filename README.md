@@ -1,5 +1,5 @@
 # defrag
-[![CodeFactor](https://www.codefactor.io/repository/github/arbazrhduke/creditreferral/badge)](https://www.codefactor.io/repository/github/arbazrhduke/creditreferral)[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 
 
 ###### This project is developed as an assignment to defraglabs
