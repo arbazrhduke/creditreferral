@@ -1,5 +1,8 @@
 # credit refferal
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+### About Project
+This is a project implemented to design to demo credit referral with optimistic locking mechanism.
+Used versioning of rows to identify potential update of a record through other process and solve problem of lost updates.
 
 ### Installation
 1. Create a virtualenv to setup environment to run application
